@@ -3,6 +3,34 @@
         text-align: center;
     }
     .info{
-        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .contactCard{
+        border: 1px solid gray;
+        border-radius: 30px;
+        padding: 50px;
+        width: 300px;
+        height: 100px;
+        h3 {
+            color: whitesmoke;
+            font-size: 22px;
+        }
+        p,a{
+            font-size: 16px;
+            color: white;
+        }
+    }
+    .phone{
+        background-color: green;
+    }
+    .adresse{
+        background-color: black;
+    }
+    .mail{
+        background-color: blue;
     }
 }
