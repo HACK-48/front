@@ -2,6 +2,8 @@ import React from "react";
 import logo from "./assets/logo_temporary.png";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
 
 function App() {
   // Create a client
@@ -9,12 +11,11 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Welcome to hackaton</p>
-        </header>
-      </div>
+      <Router>
+          <Routes>
+            <Route path='/' element={<Home/>} />
+          </Routes>
+      </Router>
     </QueryClientProvider>
   );
 }
