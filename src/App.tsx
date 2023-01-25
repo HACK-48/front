@@ -3,8 +3,8 @@ import logo from "./assets/logo_temporary.png";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import Contact from "./pages/Contact/Contact";
+import Home from "./Pages/home/Home";
+import Contact from "./Pages/Contact/Contact";
 
 function App() {
   // Create a client
@@ -13,10 +13,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-          <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/contact' element={<Contact/>} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </Router>
     </QueryClientProvider>
   );
