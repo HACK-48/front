@@ -15,7 +15,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Header />
-        <Container>
+        <Container maxWidth="xl">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
