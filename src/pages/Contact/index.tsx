@@ -1,45 +1,59 @@
-import React from "react";
-import classes from "./classes.module.scss";
 import image from "../../assets/contact_image.png";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Box, Card, CardContent, Grid, Typography, Link } from "@mui/material";
+import { blue } from "@mui/material/colors";
 
 const Contact = () => {
   return (
-    <div className={classes.container}>
-      <img src={image} alt="contact logo" />
-      <h1>Nous contacter</h1>
-      <div className={classes.info}>
-        <div className={`${classes.contactCard} ${classes.adresse}`}>
-          <span>
-            <LocationOnIcon className={classes.icons} htmlColor="white" />
-          </span>
-          <div>
-            <h3>Adresse</h3>
-            <p>Sophie lafitte</p>
-          </div>
-        </div>
-        <div className={`${classes.contactCard} ${classes.phone}`}>
-          <span>
-            <LocalPhoneIcon className={classes.icons} htmlColor="white" />
-          </span>
-          <div>
-            <h3>Numéro de téléphone</h3>
-            <a href="tel:+33632123289">+33 6 21 23 28 49</a>
-          </div>
-        </div>
-        <div className={`${classes.contactCard} ${classes.mail}`}>
-          <span>
-            <EmailIcon className={classes.icons} htmlColor="white" />
-          </span>
-          <div>
-            <h3>Email</h3>
-            <a href="mailto:hackathon@mail.com">hackathon@mail.com</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box sx={{ display: "grid" }}>
+      <Box component="img" sx={{ justifySelf: "center" }} src={image} alt="homme d'affaire marche sur un chemin" />
+      <Typography my={4} textAlign="center" variant="h4" color="initial">
+        Contactez nous
+      </Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={4}>
+          <Card variant="elevation" sx={{ height: "100%", backgroundColor: blue[50] }}>
+            <CardContent sx={{ textAlign: "center" }}>
+              <InstagramIcon sx={{ fontSize: "72px", m: 4 }} />
+              <Typography gutterBottom variant="h5" color="initial">
+                Notre Instagram
+              </Typography>
+              <Typography variant="body1">
+                <Link href="https://www.instagram.com/hack48_/" target="_blank">
+                  hack48_
+                </Link>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Card variant="elevation" sx={{ height: "100%", backgroundColor: blue[50] }}>
+            <CardContent sx={{ textAlign: "center" }}>
+              <EmailIcon sx={{ fontSize: "72px", m: 4 }} />
+              <Typography gutterBottom variant="h5" color="initial">
+                Mail support
+              </Typography>
+              <Typography variant="body1">hack48placeholder.mail.com</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Card variant="elevation" sx={{ height: "100%", backgroundColor: blue[50] }}>
+            <CardContent sx={{ textAlign: "center" }}>
+              <AccountCircleIcon sx={{ fontSize: "72px", m: 4 }} />
+              <Typography gutterBottom variant="h5" color="initial">
+                Placeholder
+              </Typography>
+              <Typography variant="body1">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio magni sint mollitia!
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
