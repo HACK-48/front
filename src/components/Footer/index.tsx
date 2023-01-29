@@ -1,11 +1,13 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Box sx={{ mt: "auto", p: 2, boxShadow: 2 }}>
-      <Typography sx={{ py: 2 }} variant="h6" component="div" align="center">
-        Footer
-      </Typography>
+    <Box sx={{ mt: "auto" }}>
+      <Paper sx={{ mt: 2, p: 2, boxShadow: 5 }}>
+        <Typography sx={{ py: 2 }} variant="h6" component="div" align="center">
+          Footer
+        </Typography>
+      </Paper>
     </Box>
   );
 };
