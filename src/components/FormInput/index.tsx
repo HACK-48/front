@@ -1,10 +1,11 @@
 import { Box, TextField, Typography } from "@mui/material";
+import { ReactNode } from "react";
 
 type Props = {
   label: string;
   type?: "text" | "email" | "password";
   required?: boolean;
-  helperText?: string;
+  helperText?: ReactNode;
   error?: boolean;
   register?: any;
 };
@@ -27,6 +28,11 @@ const FormInput = ({ label, helperText, error, register, type = "text", required
             input: {
               py: 1,
             },
+          },
+        }}
+        FormHelperTextProps={{
+          sx: {
+            ml: 0,
           },
         }}
         type={type}
