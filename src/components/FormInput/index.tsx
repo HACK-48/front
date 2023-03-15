@@ -1,17 +1,22 @@
-import { TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 
 type Props = {
   label: string;
+  type?: "text" | "email" | "password";
   required?: boolean;
   helperText?: string;
   error?: boolean;
   register?: any;
-  onChange?: (...args: any) => void;
 };
 
-const FormInput = ({ label, required, helperText, error, register }: Props) => {
+const FormInput = ({ label, helperText, error, register, type = "text", required = false }: Props) => {
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Typography mb={1} component="label" variant="body1">
         {label} {required && "*"}
       </Typography>
@@ -24,11 +29,12 @@ const FormInput = ({ label, required, helperText, error, register }: Props) => {
             },
           },
         }}
+        type={type}
         helperText={helperText}
         {...register}
         error={error}
       />
-    </>
+    </Box>
   );
 };
 
