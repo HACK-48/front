@@ -2,6 +2,7 @@ import { Button, Paper, TextField, Typography } from "@mui/material";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
+import FormInput from "../../components/form/FormInput";
 
 type Inputs = {
   pseudo: string;
@@ -23,22 +24,32 @@ const Register = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
   const password = useRef({});
   password.current = watch("password", "");
+
   return (
     <Paper
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       sx={{ display: "flex", flexDirection: "column", p: 2, width: "100%", maxWidth: "sm", mx: "auto", my: 2 }}
     >
-      <Typography variant="h6" color="initial">
-        Je crée mon compte
-      </Typography>
-      <TextField
-        helperText={errors.pseudo ? errors.pseudo.message : " "}
-        {...register("pseudo", { required: { value: true, message: "Ce champs est requis" } })}
+      <FormInput
+        label="Text"
+        required={true}
+        helperText={errors.pseudo?.message ? errors.pseudo.message : " "}
         error={!!errors.pseudo}
-        margin="dense"
-        label="Nom d'utilisateur"
+        register={register("pseudo", { required: { value: true, message: "Ce champs est requis" } })}
       />
+
+      <>
+        <Typography component="label" variant="body1">
+          Text *
+        </Typography>
+        <TextField
+          helperText={errors.pseudo ? errors.pseudo.message : " "}
+          {...register("pseudo", { required: { value: true, message: "Ce champs est requis" } })}
+          error={!!errors.pseudo}
+        />
+      </>
+
       <TextField
         type="email"
         helperText={errors.email ? errors.email.message : " "}
