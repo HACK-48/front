@@ -2,10 +2,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-import Login from "./pages/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "@mui/system";
+import Login from "./components/LoginForm";
 import Register from "./components/RegisterForm";
 
 function App() {

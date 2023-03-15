@@ -1,4 +1,4 @@
-import { Button, Grid, Link, Typography, Box } from "@mui/material";
+import { Grid, Link, Typography, Box } from "@mui/material";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
@@ -11,7 +11,6 @@ type Inputs = {
   email: string;
   firstName: string;
   lastName: string;
-  age: string;
   password: string;
   passwordConfirm: string;
 };
