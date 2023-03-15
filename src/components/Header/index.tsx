@@ -1,17 +1,59 @@
 import { AppBar, Toolbar, Button, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import styles from "./styles.module.scss";
+import logo from "../../assets/Rectangle 26.svg";
+import { redirect, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
-    <AppBar position="static" sx={{ mb: 5 }}>
+    <AppBar
+      className={styles.container}
+      position="static"
+      sx={{ mb: 5, background: "black" }}
+    >
       <Toolbar>
-        <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+        {/* <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
           <MenuIcon />
-        </IconButton>
+        </IconButton> */}
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Hack'48
+          {/* This is a placeholder don't know if it will be replaced by logo */}
+          <img
+            onClick={() => navigate("/")}
+            className={styles.logo}
+            src={logo}
+            alt=""
+          />
         </Typography>
-        <Button color="inherit">Login</Button>
+        <Button
+          onClick={() => navigate("teams")}
+          className={styles.menuLinks}
+          color="inherit"
+        >
+          Les teams
+        </Button>
+        <Button
+          onClick={() => navigate("old-porjects")}
+          className={styles.menuLinks}
+          color="inherit"
+        >
+          Projet passes
+        </Button>
+        <Button
+          onClick={() => navigate("contact")}
+          className={styles.menuLinks}
+          color="inherit"
+        >
+          Contact
+        </Button>
+        <Button
+          onClick={() => navigate("login")}
+          className={styles.menuLinks}
+          color="inherit"
+        >
+          Connexion
+        </Button>
       </Toolbar>
     </AppBar>
   );
