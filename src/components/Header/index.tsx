@@ -4,8 +4,30 @@ import styles from "./styles.module.scss";
 import logo from "../../assets/Rectangle 26.svg";
 import { redirect, useNavigate } from "react-router-dom";
 
-const Header = () => {
+interface IProps {
+  isAuth?: boolean;
+}
+
+const Header = ({ isAuth = false }: IProps) => {
   const navigate = useNavigate();
+
+  const userLinks = isAuth ? (
+    <Button
+      onClick={() => navigate("user-profile")}
+      className={styles.menuLinks}
+      color="inherit"
+    >
+      Porfile
+    </Button>
+  ) : (
+    <Button
+      onClick={() => navigate("login")}
+      className={styles.menuLinks}
+      color="inherit"
+    >
+      Connexion
+    </Button>
+  );
 
   return (
     <AppBar
@@ -47,13 +69,7 @@ const Header = () => {
         >
           Contact
         </Button>
-        <Button
-          onClick={() => navigate("login")}
-          className={styles.menuLinks}
-          color="inherit"
-        >
-          Connexion
-        </Button>
+        {userLinks}
       </Toolbar>
     </AppBar>
   );
