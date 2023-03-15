@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { Link as RouterLink } from "react-router-dom";
 import FormInput from "../FormInput";
+import FormSubmit from "../FormSubmit";
 
 type Inputs = {
   pseudo: string;
@@ -102,14 +103,8 @@ const RegisterForm = () => {
           />
         </Grid>
 
-        <Grid item xs={6} sx={{ textAlign: "center" }} margin="auto">
-          <Button
-            type="submit"
-            variant="contained"
-            sx={{ width: "100%", borderRadius: "0", boxShadow: "0", textTransform: "none", background: "#000", mb: 1 }}
-          >
-            Connexion
-          </Button>
+        <Grid item xs={12} sm={6} sx={{ textAlign: "center" }} margin="auto">
+          <FormSubmit>Connexion</FormSubmit>
           <Link color={"#000"} component={RouterLink} to={"/login"}>
             Déjà un compte ?
           </Link>
