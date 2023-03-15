@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "@mui/system";
-import Register from "./pages/Register";
+import Register from "./components/RegisterForm";
 
 function App() {
   // Create a client
