@@ -1,0 +1,69 @@
+@import '../../mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;1,100&display=swap');
+
+.container {
+  // width: 25%;
+  font-family: 'Montserrat', sans-serif;
+  border: 0px solid black;
+  //   border-radius: 10px;
+  background-color: #e3e3e3;
+  width: 1197px;
+  height: 270px;
+  margin: auto;
+  justify-content: space-between;
+
+  .titleContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    h2{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        color: black;
+        font-weight: 600;
+        padding-left: 12px;
+    }
+  }
+
+ 
+
+  @include from-breakpoint(phone) {
+    width: auto;
+    height: auto;
+  }
+
+  .gridContainer {
+    justify-content: space-between;
+    .firstGrid {
+      max-width: 585px;
+    }
+  }
+
+  .card {
+    max-width: 345;
+  }
+  .media {
+    height: 202px;
+    // width: 433px;
+    border-radius: 15px;
+  }
+  .learnMore {
+    justify-content: end;
+    padding: 0;
+    text-decoration: underline;
+    button {
+      color: black;
+      text-transform: none;
+    }
+  }
+  .description {
+    margin: 0;
+    // white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: auto;
+    max-height: 92px;
+    @include from-breakpoint(phone) {
+        font-size: 14px;
+    }
+  }
+}
