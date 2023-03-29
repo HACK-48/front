@@ -1,0 +1,15 @@
+.container {
+  background-color: black;
+  padding: 20px;
+  .menuLinks {
+    text-transform: none;
+    margin-left: 50px;
+    font-weight: bold;
+  }
+  .logo {
+    vertical-align: middle;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -23,7 +23,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/previous-projects" element={<PreviousProjects />} />
+            <Route path="/old-projects" element={<PreviousProjects />} />
           </Routes>
         </Container>
         <Footer />
