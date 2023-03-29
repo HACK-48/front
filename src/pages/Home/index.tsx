@@ -1,5 +1,11 @@
+import React from "react";
+import ProjectCard from "../../components/ProjectCard";
 const Home = () => {
-  return <>Home</>;
+  return (
+    <>
+     <ProjectCard/>
+    </>
+  )
 };
 
 export default Home;
