@@ -10,7 +10,14 @@ type Props = {
   register?: any;
 };
 
-const FormInput = ({ label, helperText, error, register, type = "text", required = false }: Props) => {
+const FormInput = ({
+  label,
+  helperText,
+  error,
+  register,
+  type = "text",
+  required = false,
+}: Props) => {
   return (
     <Box
       sx={{
