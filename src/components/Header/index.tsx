@@ -6,8 +6,10 @@ import {
   IconButton,
   Typography,
   Box,
-  Menu,
-  MenuItem,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "./styles.module.scss";
@@ -20,32 +22,32 @@ interface IProps {
 
 const Header = ({ isAuth = false }: IProps) => {
   const navigate = useNavigate();
-  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMenuAnchor(event.currentTarget);
+  const handleDrawerOpen = () => {
+    setDrawerOpen(true);
   };
 
-  const handleMenuClose = () => {
-    setMenuAnchor(null);
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
   };
 
   const userLinks = isAuth ? (
-    <Button
+    <ListItemText
       onClick={() => navigate("user-profile")}
       className={styles.menuLinks}
       color="inherit"
     >
       Porfile
-    </Button>
+    </ListItemText>
   ) : (
-    <Button
+    <ListItemText
       onClick={() => navigate("login")}
       className={styles.menuLinks}
       color="inherit"
     >
       Connexion
-    </Button>
+    </ListItemText>
   );
 
   return (
@@ -62,7 +64,7 @@ const Header = ({ isAuth = false }: IProps) => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2, display: { md: "none" } }}
-            onClick={handleMenuOpen}
+            onClick={handleDrawerOpen}
           >
             <MenuIcon />
           </IconButton>
@@ -99,21 +101,23 @@ const Header = ({ isAuth = false }: IProps) => {
             {userLinks}
           </Box>
         </Toolbar>
-        <Menu
-          anchorEl={menuAnchor}
-          open={Boolean(menuAnchor)}
-          onClose={handleMenuClose}
-        >
-          <MenuItem onClick={() => navigate("teams")}>Les teams</MenuItem>
-          <MenuItem onClick={() => navigate("old-projects")}>
-            Projet passes
-          </MenuItem>
-          <MenuItem onClick={() => navigate("contact")}>Contact</MenuItem>
-          {userLinks}
-        </Menu>
       </AppBar>
+      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
+        <List>
+          <ListItem button onClick={() => navigate("teams")}>
+            <ListItemText primary="Les teams" />
+          </ListItem>
+          <ListItem button onClick={() => navigate("old-projects")}>
+            <ListItemText primary="Projet passes" />
+          </ListItem>
+          <ListItem button onClick={() => navigate("contact")}>
+            <ListItemText primary="Contact" />
+          </ListItem>
+          <ListItem button>{userLinks}</ListItem>
+        </List>
+      </Drawer>
     </Box>
   );
 };
- 
+
 export default Header;
