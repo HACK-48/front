@@ -1,0 +1,27 @@
+// Define breakpoints for different screen sizes
+$breakpoints: (
+  phone: 0,
+  tablet: 600px,
+  desktop: 960px,
+);
+
+// Define a mixin to apply styles only for the given screen size and larger
+@mixin from-breakpoint($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+// Define a mixin to apply styles only for the given screen size and smaller
+@mixin until-breakpoint($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+// Define a mixin to apply styles between the two given screen sizes (inclusive)
+@mixin between-breakpoints($start, $end) {
+  @media (min-width: map-get($breakpoints, $start)) and (max-width: map-get($breakpoints, $end)) {
+    @content;
+  }
+}
