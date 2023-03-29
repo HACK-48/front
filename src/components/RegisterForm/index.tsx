@@ -4,7 +4,9 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { Link as RouterLink } from "react-router-dom";
 import FormInput from "../FormInput";
+import FormSelect from "../FormSelect";
 import FormSubmit from "../FormSubmit";
+import { SectorOptions } from "./sectors";
 
 type Inputs = {
   pseudo: string;
@@ -13,6 +15,7 @@ type Inputs = {
   lastName: string;
   password: string;
   passwordConfirm: string;
+  sector: typeof SectorOptions;
 };
 
 const RegisterForm = () => {
@@ -34,23 +37,30 @@ const RegisterForm = () => {
       <Typography variant="body1" mb={5}>
         Porem ipsum dolor sit amet, consectetur adipiscing elit.
       </Typography>
-      <Grid container component="form" onSubmit={handleSubmit(onSubmit)} spacing={2}>
+      <Grid
+        container
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+        spacing={2}
+      >
         <Grid item xs={12} sm={6}>
           <FormInput
             label="Nom"
-            required={true}
-            helperText={errors.lastName?.message ? errors.lastName.message : " "}
+            helperText={
+              errors.lastName?.message ? errors.lastName.message : " "
+            }
             error={!!errors.lastName}
-            register={register("lastName", { required: { value: true, message: "Ce champs est requis" } })}
+            register={register("lastName")}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormInput
             label="Prénom"
-            required={true}
-            helperText={errors.firstName?.message ? errors.firstName.message : " "}
+            helperText={
+              errors.firstName?.message ? errors.firstName.message : " "
+            }
             error={!!errors.firstName}
-            register={register("firstName", { required: { value: true, message: "Ce champs est requis" } })}
+            register={register("firstName")}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -75,7 +85,9 @@ const RegisterForm = () => {
             required={true}
             helperText={errors.pseudo?.message ? errors.pseudo.message : " "}
             error={!!errors.pseudo}
-            register={register("pseudo", { required: { value: true, message: "Ce champs est requis" } })}
+            register={register("pseudo", {
+              required: { value: true, message: "Ce champs est requis" },
+            })}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -83,9 +95,13 @@ const RegisterForm = () => {
             label="Mot de passe"
             type="password"
             required={true}
-            helperText={errors.password?.message ? errors.password.message : " "}
+            helperText={
+              errors.password?.message ? errors.password.message : " "
+            }
             error={!!errors.password}
-            register={register("password", { required: { value: true, message: "Ce champs est requis" } })}
+            register={register("password", {
+              required: { value: true, message: "Ce champs est requis" },
+            })}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -93,12 +109,26 @@ const RegisterForm = () => {
             label="Confirmer mot de passe"
             type="password"
             required={true}
-            helperText={errors.passwordConfirm?.message ? errors.passwordConfirm.message : " "}
+            helperText={
+              errors.passwordConfirm?.message
+                ? errors.passwordConfirm.message
+                : " "
+            }
             error={!!errors.passwordConfirm}
             register={register("passwordConfirm", {
               required: { value: true, message: "Ce champs est requis" },
-              validate: (value) => value === password.current || "Les mots de passe ne correspondent pas.",
+              validate: (value) =>
+                value === password.current ||
+                "Les mots de passe ne correspondent pas.",
             })}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormSelect
+            label="Filière"
+            options={Object.entries(SectorOptions)}
+            error={!!errors.sector}
+            register={register("sector")}
           />
         </Grid>
 
