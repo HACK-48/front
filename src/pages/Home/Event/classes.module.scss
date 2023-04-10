@@ -1,0 +1,17 @@
+.grid {
+  display: grid;
+  gap: 32px;
+  text-align: center;
+}
+
+@media screen and (min-width: 992px) {
+  .grid {
+    text-align: left;
+    grid-template-columns: 3fr 550px;
+    gap: 58px;
+  }
+
+  .text {
+    max-width: 600px;
+  }
+}

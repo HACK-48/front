@@ -23,12 +23,17 @@ const theme = createTheme({
     h1: {
       lineHeight: "1.3",
       fontWeight: "900",
-      fontSize: "63",
+      fontSize: "63px",
     },
     h2: {
       lineHeight: "1.3",
       fontWeight: "900",
-      fontSize: "40",
+      fontSize: "40px",
+    },
+    body2: {
+      lineHeight: "1.3",
+      fontWeight: "700",
+      fontSize: "20px",
     },
   },
 });

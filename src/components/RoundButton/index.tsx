@@ -1,6 +1,6 @@
 import { Button, ButtonProps } from "@mui/material";
 
-const RoundButton = ({ children, ...props }: ButtonProps) => {
+const RoundButton = ({ children, sx = {}, ...props }: ButtonProps) => {
   return (
     <Button
       sx={{
@@ -9,6 +9,7 @@ const RoundButton = ({ children, ...props }: ButtonProps) => {
         fontWeight: "900",
         textTransform: "none",
         padding: "12px 32px",
+        ...sx,
       }}
       {...props}
     >

@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@mui/material";
 
-const Image = ({ children, sx, ...props }: BoxProps) => {
+const Image = ({ children, src, alt, sx, ...props }: BoxProps & { src: string; alt: string }) => {
   return (
     <Box
       sx={{
@@ -9,6 +9,8 @@ const Image = ({ children, sx, ...props }: BoxProps) => {
         width: "100%",
         ...sx,
       }}
+      src={src}
+      alt={alt}
       {...props}
       component="img"
     />

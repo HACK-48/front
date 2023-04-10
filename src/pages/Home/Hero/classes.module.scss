@@ -1,12 +1,11 @@
-.container {
-  text-align: center;
+.grid {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 32px;
+  text-align: center;
 }
 
 @media screen and (min-width: 992px) {
-  .container {
+  .grid {
     text-align: left;
     grid-template-columns: 1fr 475px;
     gap: 162px;
