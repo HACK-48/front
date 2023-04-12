@@ -1,5 +1,6 @@
 import { Container, Typography } from "@mui/material";
 import ProjectCard from "../../components/ProjectCard";
+import React from "react";
 
 const PreviousProjects = () => {
   const testDesc = ` Nisi laborum esse ex tempor. Fugiat nulla culpa mollit duis ut ut
@@ -11,36 +12,37 @@ const PreviousProjects = () => {
   officia nulla. Quis est occaecat magna excepteur et ea fugiat
   exercitation.`;
 
-  const projects = [
+  const data = [
     {
       title: "Equipe 1",
       description: testDesc,
       img: "https://picsum.photos/200/300",
-      link: "/",
+      link: "/team/1",
+      rank: 1,
+    },
+    {
+      title: "Equipe 2",
+      description: testDesc,
+      img: "https://picsum.photos/200/300",
+      link: "/team/2",
       rank: 2,
     },
     {
       title: "Equipe 3",
       description: testDesc,
       img: "https://picsum.photos/200/300",
-      link: "/",
+      link: "/team/3",
       rank: 3,
     },
-    {
-      title: "Equipe 4",
-      description: testDesc,
-      img: "https://picsum.photos/200/300",
-      link: "/",
-      rank: 1,
-    },
-    {
-      title: "Equipe 5",
-      description: testDesc,
-      img: "https://picsum.photos/200/300",
-      link: "/",
-      rank: 2,
-    },
   ];
+
+  const [projects, setProjects] = React.useState<typeof data>([]);
+
+  React.useEffect(() => {
+    (async () => {
+      setProjects(data);
+    })();
+  }, [data]);
 
   return (
     <Container
