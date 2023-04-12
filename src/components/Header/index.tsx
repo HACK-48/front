@@ -73,7 +73,7 @@ const Header = ({ isAuth = true }: IProps) => {
       <AppBar
         className={styles.container}
         position="static"
-        sx={{ background: "black" }}
+        sx={{ background: "#111" }}
       >
         <Toolbar sx={{ display: { xs: "flex", md: "flex" }, flexWrap: "wrap" }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
