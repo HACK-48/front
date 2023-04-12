@@ -8,6 +8,7 @@ import { Container } from "@mui/system";
 import Login from "./components/LoginForm";
 import Register from "./components/RegisterForm";
 import PreviousProjects from "./pages/PreviousProjects";
+import TeamManagementEventPage from "./pages/TeamManagementEvent";
 
 function App() {
   // Create a client
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/old-projects" element={<PreviousProjects />} />
+            <Route path='/manage' element={<TeamManagementEventPage />}></Route>
           </Routes>
         </Container>
         <Footer />
