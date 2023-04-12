@@ -7,8 +7,10 @@ import Footer from "./components/Footer";
 import Login from "./components/LoginForm";
 import Register from "./components/RegisterForm";
 import PreviousProjects from "./pages/PreviousProjects";
+import TeamManagementEventPage from "./pages/TeamManagementEvent";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./theme";
+import Profile from "./pages/Profile";
 
 function App() {
   // Create a client
@@ -25,6 +27,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/old-projects" element={<PreviousProjects />} />
+            <Route path="/user-profile" element={<Profile />} />
+            <Route
+              path="/projectEventManager"
+              element={<TeamManagementEventPage />}
+            ></Route>
           </Routes>
           <Footer />
         </Router>
