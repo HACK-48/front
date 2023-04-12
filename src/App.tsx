@@ -4,11 +4,12 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { Container } from "@mui/system";
 import Login from "./components/LoginForm";
 import Register from "./components/RegisterForm";
 import PreviousProjects from "./pages/PreviousProjects";
 import TeamManagementEventPage from "./pages/TeamManagementEvent";
+import { ThemeProvider } from "@emotion/react";
+import theme from "./theme";
 
 function App() {
   // Create a client
@@ -16,9 +17,9 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <Header />
-        <Container maxWidth="xl">
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
@@ -27,9 +28,9 @@ function App() {
             <Route path="/old-projects" element={<PreviousProjects />} />
             <Route path='/manage' element={<TeamManagementEventPage />}></Route>
           </Routes>
-        </Container>
-        <Footer />
-      </Router>
+          <Footer />
+        </Router>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
