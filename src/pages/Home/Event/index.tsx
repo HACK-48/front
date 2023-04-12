@@ -2,6 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import Image from "../../../components/Image";
 import classes from "./classes.module.scss";
 import RoundButton from "../../../components/RoundButton";
+import img from "../../../assets/images/Photo event.png";
 
 const Event = () => {
   return (
@@ -38,7 +39,7 @@ const Event = () => {
               prêts à coder ?
             </Typography>
           </div>
-          <Image src="" alt="" className={classes.img} />
+          <Image src={img} alt="space" className={classes.img} />
         </div>
         <Box sx={{ textAlign: "center", mt: 5 }}>
           <RoundButton
