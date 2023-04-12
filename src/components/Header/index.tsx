@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "./styles.module.scss";
-import logo from "../../assets/Rectangle 26.svg";
+import logo from "../../assets/Logo-Hack48.svg";
 import { redirect, useNavigate } from "react-router-dom";
 
 interface IProps {
@@ -33,21 +33,41 @@ const Header = ({ isAuth = false }: IProps) => {
   };
 
   const userLinks = isAuth ? (
-    <ListItemText
+    <Button
       onClick={() => navigate("user-profile")}
       className={styles.menuLinks}
       color="inherit"
     >
-      Porfile
-    </ListItemText>
+      Profil
+    </Button>
   ) : (
-    <ListItemText
+    <Button
       onClick={() => navigate("login")}
       className={styles.menuLinks}
       color="inherit"
     >
       Connexion
-    </ListItemText>
+    </Button>
+  );
+
+  const userLinksMobile = isAuth ? (
+    <ListItem
+      onClick={() => navigate("user-profile")}
+      className={styles.menuLinks}
+      color="inherit"
+      button
+    >
+      Profil
+    </ListItem>
+  ) : (
+    <ListItem
+      onClick={() => navigate("login")}
+      className={styles.menuLinks}
+      color="inherit"
+      button
+    >
+      Connexion
+    </ListItem>
   );
 
   return (
@@ -89,7 +109,7 @@ const Header = ({ isAuth = false }: IProps) => {
               className={styles.menuLinks}
               color="inherit"
             >
-              Projet passes
+              Projet passés
             </Button>
             <Button
               onClick={() => navigate("contact")}
@@ -102,7 +122,7 @@ const Header = ({ isAuth = false }: IProps) => {
           </Box>
         </Toolbar>
       </AppBar>
-      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
+      <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
         <List>
           <ListItem button onClick={() => navigate("teams")}>
             <ListItemText primary="Les teams" />
@@ -113,7 +133,7 @@ const Header = ({ isAuth = false }: IProps) => {
           <ListItem button onClick={() => navigate("contact")}>
             <ListItemText primary="Contact" />
           </ListItem>
-          <ListItem button>{userLinks}</ListItem>
+          {userLinksMobile}
         </List>
       </Drawer>
     </Box>
