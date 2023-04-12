@@ -1,3 +1,5 @@
+import { Box } from "@mui/material";
+
 type Props = {
   src: string;
   title: string;
@@ -7,14 +9,21 @@ type Props = {
 
 const VideoPlayer = ({ src, title, width = 560, height = 433 }: Props) => {
   return (
-    <iframe
-      width={`${width}`}
-      height={`${height}`}
-      src={src}
-      title={title}
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowFullScreen
-    ></iframe>
+    <Box
+      sx={{
+        display: "flex",
+        "& > iframe": { margin: "auto" },
+      }}
+    >
+      <iframe
+        width={`${width}`}
+        height={`${height}`}
+        src={src}
+        title={title}
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></iframe>
+    </Box>
   );
 };
 
