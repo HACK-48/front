@@ -53,33 +53,43 @@ const Header = ({ isAuth = true }: IProps) => {
   const userLinksMobile = isAuth ? (
     <ListItem
       onClick={() => navigate("user-profile")}
-      // className={styles.menuLinks}
-      color="inherit"
+      //className={styles.menuLinks}
       button
     >
-      Profil
+      <ListItemText primary="Profil" />
     </ListItem>
   ) : (
     <ListItem
       onClick={() => navigate("login")}
       // className={styles.menuLinks}
-      color="inherit"
       button
     >
-      Connexion
+      <ListItemText primary="Connexion" />
     </ListItem>
   );
 
   return (
     <Box>
-      <AppBar className={styles.container} position="static" sx={{ background: "black" }}>
+      <AppBar
+        className={styles.container}
+        position="static"
+        sx={{ background: "black" }}
+      >
         <Toolbar sx={{ display: { xs: "flex", md: "flex" }, flexWrap: "wrap" }}>
-         
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <img onClick={() => navigate("/")} className={styles.logo} src={logo} alt="" />
+            <img
+              onClick={() => navigate("/")}
+              className={styles.logo}
+              src={logo}
+              alt=""
+            />
           </Typography>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Button onClick={() => navigate("teams")} className={styles.menuLinks} color="inherit">
+            <Button
+              onClick={() => navigate("teams")}
+              className={styles.menuLinks}
+              color="inherit"
+            >
               Les teams
             </Button>
             <Button
@@ -89,7 +99,11 @@ const Header = ({ isAuth = true }: IProps) => {
             >
               Projet passés
             </Button>
-            <Button onClick={() => navigate("contact")} className={styles.menuLinks} color="inherit">
+            <Button
+              onClick={() => navigate("contact")}
+              className={styles.menuLinks}
+              color="inherit"
+            >
               Contact
             </Button>
             {userLinks}
