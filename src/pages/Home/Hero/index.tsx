@@ -2,6 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import RoundButton from "../../../components/RoundButton";
 import Image from "../../../components/Image";
 import classes from "./classes.module.scss";
+import img from "../../../assets/images/Photo header.png";
 
 const Hero = () => {
   return (
@@ -30,7 +31,7 @@ const Hero = () => {
               Rejoindre l'aventure
             </RoundButton>
           </Box>
-          <Image src="" alt="" className={classes.img} />
+          <Image src={img} alt="arduino" className={classes.img} />
         </div>
       </Container>
     </Box>

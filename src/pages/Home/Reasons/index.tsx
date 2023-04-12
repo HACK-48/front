@@ -2,6 +2,7 @@ import { Box, Card, CardContent, Container, Typography } from "@mui/material";
 import RoundButton from "../../../components/RoundButton";
 import Image from "../../../components/Image";
 import classes from "./classes.module.scss";
+import logo from "../../../assets/images/Logo Hack48.svg";
 
 const Reasons = () => {
   return (
@@ -17,16 +18,16 @@ const Reasons = () => {
       <Container maxWidth="xl">
         {/* TODO : get resized logo */}
         <Image
-          src="/assets/images/logo.png"
+          src={logo}
           alt="logo hack'48"
-          sx={{ width: "60px", mb: 1 }}
+          sx={{ width: "60px", mb: 1, borderRadius: "none" }}
         />
         <Typography variant="h2" mb={5} sx={{ maxWidth: "735px" }} mx="auto">
           Trois bonnes raisons de participer à HACK48
         </Typography>
         <Box className={classes.wrapper}>
           <Card
-            sx={{ background: "#282828", color: "#fff", mb: 2, mx: "auto" }}
+            sx={{ background: "#282828", color: "#fff", mb: 4, mx: "auto" }}
           >
             <CardContent sx={{ minWidth: "100%", maxWidth: "350px" }}>
               <Typography variant="h1" component="p" my={5}>
@@ -40,7 +41,7 @@ const Reasons = () => {
             </CardContent>
           </Card>
           <Card
-            sx={{ background: "#282828", color: "#fff", mb: 2, mx: "auto" }}
+            sx={{ background: "#282828", color: "#fff", mb: 4, mx: "auto" }}
           >
             <CardContent sx={{ minWidth: "100%", maxWidth: "350px" }}>
               <Typography variant="h1" component="p" my={5}>
@@ -54,7 +55,7 @@ const Reasons = () => {
             </CardContent>
           </Card>
           <Card
-            sx={{ background: "#282828", color: "#fff", mb: 2, mx: "auto" }}
+            sx={{ background: "#282828", color: "#fff", mb: 4, mx: "auto" }}
           >
             <CardContent sx={{ minWidth: "100%", maxWidth: "350px" }}>
               <Typography variant="h1" component="p" my={5}>
