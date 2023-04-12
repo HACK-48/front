@@ -10,24 +10,24 @@ const theme = createTheme({
     fontFamily: "Montserrat, sans-serif",
     subtitle1: {
       fontSize: "26px",
-      fontWeight: "200",
+      fontWeight: "400",
       lineHeight: "1",
       marginBottom: "8px",
     },
     subtitle2: {
       fontSize: "26px",
-      fontWeight: "900",
+      fontWeight: "700",
       lineHeight: "1",
       marginBottom: "8px",
     },
     h1: {
       lineHeight: "1.3",
-      fontWeight: "900",
+      fontWeight: "700",
       fontSize: "63px",
     },
     h2: {
       lineHeight: "1.3",
-      fontWeight: "900",
+      fontWeight: "700",
       fontSize: "40px",
     },
     body2: {
