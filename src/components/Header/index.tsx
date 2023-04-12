@@ -78,16 +78,7 @@ const Header = ({ isAuth = false }: IProps) => {
         sx={{ mb: 5, background: "black" }}
       >
         <Toolbar sx={{ display: { xs: "flex", md: "flex" }, flexWrap: "wrap" }}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2, display: { md: "none" } }}
-            onClick={handleDrawerOpen}
-          >
-            <MenuIcon />
-          </IconButton>
+         
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <img
               onClick={() => navigate("/")}
@@ -120,6 +111,17 @@ const Header = ({ isAuth = false }: IProps) => {
             </Button>
             {userLinks}
           </Box>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            className={styles.menuButton}
+            sx={{ mr: 2, display: { md: "none" } }}
+            onClick={handleDrawerOpen}
+          >
+            <MenuIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
