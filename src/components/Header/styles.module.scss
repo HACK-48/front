@@ -4,7 +4,7 @@
   .menuLinks {
     text-transform: none;
     margin-left: 50px;
-    font-weight: 400 !important;
+    font-weight: 300 !important;
     font-size: 16px;
   }
   .logo {
@@ -14,7 +14,7 @@
     }
   }
   .menuButton{
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 }

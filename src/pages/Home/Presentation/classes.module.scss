@@ -1,0 +1,16 @@
+.grid {
+  display: grid;
+}
+
+.video {
+  aspect-ratio: 4 / 3;
+  // temp
+  background-color: #111;
+}
+
+@media screen and (min-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+}
