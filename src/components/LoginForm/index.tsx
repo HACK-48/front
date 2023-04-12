@@ -1,9 +1,11 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import FormInput from "../FormInput";
 import FormSubmit from "../FormSubmit";
+import axios from "axios";
+import React from "react";
 
 type Inputs = {
   email: string;
@@ -14,12 +16,34 @@ const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-  const password = useRef({});
-  password.current = watch("password", "");
+  const [error, setError] = React.useState('');
+  const url = `http://localhost:8080/api/v1/login`;
+  const navigate = useNavigate();
+
+  const onSubmit = handleSubmit(async(values, event) => {
+    event?.preventDefault();
+
+    try {
+      const response = await axios.post(url, values);
+  
+      if (response.status === 201) {
+        localStorage.setItem("token", response.data.token);
+        navigate('/');
+      }
+    } catch(error: any) {
+      setError(error.message);
+    }
+  });
+
+  const errorsDisplayer = () => {
+    if (error) {
+      return (
+        <p style={{color: "red"}}>{error}</p>
+      )
+    }
+  }
 
   return (
     <Box maxWidth="sm" margin="auto">
@@ -32,7 +56,12 @@ const LoginForm = () => {
           inscrivez-vous
         </Link>
       </Typography>
-      <Grid container component="form" onSubmit={handleSubmit(onSubmit)} spacing={2}>
+      <Grid
+        container
+        component="form"
+        onSubmit={onSubmit}
+        spacing={2}
+      >
         <Grid item xs={12}>
           <FormInput
             label="Email"
@@ -59,6 +88,9 @@ const LoginForm = () => {
                 Mot de passe oublié ?
               </Link>
             }
+            register={register("password", {
+              required: { value: true, message: "Ce champs est requis" },
+            })}
           />
         </Grid>
 
@@ -66,6 +98,7 @@ const LoginForm = () => {
           <FormSubmit>Connexion</FormSubmit>
         </Grid>
       </Grid>
+      {errorsDisplayer()}
     </Box>
   );
 };

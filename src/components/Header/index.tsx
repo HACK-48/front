@@ -51,21 +51,18 @@ const Header = ({ isAuth = true }: IProps) => {
   );
 
   const userLinksMobile = isAuth ? (
-    <ListItem
-      onClick={() => navigate("user-profile")}
-      //className={styles.menuLinks}
-      button
-    >
+    <ListItem onClick={() => navigate("user-profile")}>
       <ListItemText primary="Profil" />
     </ListItem>
   ) : (
-    <ListItem
-      onClick={() => navigate("login")}
-      // className={styles.menuLinks}
-      button
-    >
-      <ListItemText primary="Connexion" />
-    </ListItem>
+    <List>
+      <ListItem onClick={() => navigate("login")}>
+        <ListItemText primary="Connexion" />
+      </ListItem>
+      <ListItem onClick={() => navigate("register")}>
+        <ListItemText primary="S'inscrire" />
+      </ListItem>
+    </List>
   );
 
   return (
