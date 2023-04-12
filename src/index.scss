@@ -30,3 +30,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.card-container {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+}
+
+.main-container {
+  padding: 2rem 10rem 2rem 10rem;
+  text-align: left;
+}
+
+.text-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.team-text {
+  font-size: 15px;
+}
+
+.is-flex {
+  display: flex;
+}
+
+.team-card-container {
+  flex-wrap: wrap;
+  justify-content: center;
+}
