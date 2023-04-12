@@ -1,8 +1,12 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, useMediaQuery } from "@mui/material";
 import classes from "./classes.module.scss";
 import VideoPlayer from "../../../components/VideoPlayer";
 
 const Presentation = () => {
+  const matches = useMediaQuery("(min-width: 992px)");
+
+  const [width, height] = matches ? [560, 433] : [320, 280];
+
   return (
     <Box
       sx={{
@@ -18,11 +22,11 @@ const Presentation = () => {
           hackathon !
         </Typography>
         <div className={classes.grid}>
-          {/* This is a temporary element */}
-          {/* <Box className={classes.video} /> */}
           <VideoPlayer
             src="https://www.youtube.com/embed/7oDjB9v0zMs"
             title="placeholder"
+            width={width}
+            height={height}
           />
           <div>
             <Typography variant="body1" my={5}>
