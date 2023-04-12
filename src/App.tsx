@@ -26,7 +26,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/old-projects" element={<PreviousProjects />} />
-            <Route path='/manage' element={<TeamManagementEventPage />}></Route>
+            <Route path='/projectEventManager' element={<TeamManagementEventPage />}></Route>
           </Routes>
           <Footer />
         </Router>

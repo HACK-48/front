@@ -47,8 +47,7 @@ export default function ChooseTeamSection() {
 
   return (
     <div className="main-container">
-      {/* <p className="font-link">Choisissez une team</p> */}
-      <Typography component="p" variant="body1" fontWeight={500}>Choisissez une team</Typography>
+      <Typography component="p" variant="h5">Choisissez une team</Typography>
       <div className="team-card-container is-flex">
         {
             teams.map((team: any, index: number) => {

@@ -6,13 +6,17 @@ import axios from "axios";
 import MainTitle from "../../../components/MainTitle";
 import ToolCard from "../../../components/ToolCardComponent";
 import { Typography } from "@mui/material";
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmVjNjE2NjdmNjk1ZWUxZGI5MjBjNyIsImlhdCI6MTY4MTI4OTQ4MSwiZXhwIjoxNjgxMzAwMjgxfQ.YnFn4lrmDkdNEBhXkZEBHeLqIlGrg34VET4Zp9JECDM";
+import { useNavigate } from "react-router-dom";
 
 export default function TeamToolSection() {
+  const navigate = useNavigate();
+
   const url = "teamProjectManagement/6411beea15035f8d5cec5619";
-  const [malusSentences, setMalusSentences] = React.useState<string[]>([]);
   const images = [malus1, malus2, malus3];
+  const token = localStorage.getItem("token");
+
+  const [malusSentences, setMalusSentences] = React.useState<string[]>([]);
+  const [errors, setErrors] = React.useState("");
 
   React.useEffect(() => {
     (async () => {
@@ -29,11 +33,15 @@ export default function TeamToolSection() {
             (_: any) => _.projectManagementEventId.sentence
           )
         );
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        setErrors(error.message);
       }
     })();
   }, []);
+
+  if (errors) {
+    navigate("/login");
+  }
 
   return (
     <div className="main-container">
@@ -41,8 +49,7 @@ export default function TeamToolSection() {
         text="Donnez un malus à l'équipe de votre choix :"
         color={null}
       ></MainTitle>
-      {/* <p className="font-link">Choisissez un malus </p> */}
-      <Typography component="p" variant="body1" fontWeight={500}>
+      <Typography component="p" variant="h5">
         Choisissez un malus
       </Typography>
       <div className="card-container">

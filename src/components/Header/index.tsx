@@ -69,6 +69,9 @@ const Header = ({ isAuth = true }: IProps) => {
             <Button onClick={() => navigate("contact")} className={styles.menuLinks} color="inherit">
               Contact
             </Button>
+            <Button onClick={() => navigate("projectEventManager")} className={styles.menuLinks} color="inherit">
+              Outil
+            </Button>
             {userLinks}
           </Box>
         </Toolbar>
@@ -83,6 +86,9 @@ const Header = ({ isAuth = true }: IProps) => {
           </ListItem>
           <ListItem button onClick={() => navigate("contact")}>
             <ListItemText primary="Contact" />
+          </ListItem>
+          <ListItem button onClick={() => navigate("projectEventManager")}>
+            <ListItemText primary="Outil" />
           </ListItem>
           <ListItem button>{userLinks}</ListItem>
         </List>
