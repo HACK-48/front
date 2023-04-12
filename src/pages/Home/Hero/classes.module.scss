@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.img {
+  display: none;
+}
+
 @media screen and (min-width: 992px) {
   .grid {
     text-align: left;
@@ -13,5 +17,9 @@
 
   .text {
     max-width: 600px;
+  }
+
+  .img {
+    display: unset;
   }
 }

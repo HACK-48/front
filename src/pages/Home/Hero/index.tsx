@@ -19,13 +19,18 @@ const Hero = () => {
               Le 15 et 16 Septembre 2023
             </Typography>
             <Typography variant="h2" component="h1" mb="46px">
-              Hackathon limité, créativité illimitée : voyez les contraintes comme des opportunités
+              Hackathon limité, créativité illimitée : voyez les contraintes
+              comme des opportunités
             </Typography>
-            <RoundButton href="/old-projects" variant="contained" color="primary">
+            <RoundButton
+              href="/old-projects"
+              variant="contained"
+              color="primary"
+            >
               Rejoindre l'aventure
             </RoundButton>
           </Box>
-          <Image src="" alt="" />
+          <Image src="" alt="" className={classes.img} />
         </div>
       </Container>
     </Box>
