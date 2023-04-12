@@ -21,20 +21,18 @@ const ContactForm = () => {
 	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
 	return (
-		<Box
-			maxWidth='sm'
-			margin='auto'>
+		<Box>
 			<Typography
 				gutterBottom
-				variant='h5'
+				variant='h4'
 				component='h2'
-				fontWeight={600}>
+				fontWeight={700}>
 				Contactez-nous
 			</Typography>
 			<Typography
 				variant='body1'
 				mb={5}>
-				Porem ipsum dolor sit amet, consectetur adipiscing elit.
+				Posez votre question en utilisant le formulaire ci-dessous :
 			</Typography>
 			<Grid
 				container
