@@ -1,11 +1,8 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { CardMedia, Grid } from "@mui/material";
+import { Card, CardMedia, Grid } from "@mui/material";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 import rank1 from "../../assets/medaille_1.svg";
@@ -62,7 +59,7 @@ const ProjectCard = ({
 
   const srSet = `${img}?resize=200 200w, ${img}?resize=400 400w`;
   return (
-    <>
+    <Card sx={{ mb: 3 }}>
       <CardContent className={styles.container}>
         <Grid className={styles.gridContainer} container spacing={2}>
           <Grid className={styles.firstGrid} item xs={12} md={8}>
@@ -104,7 +101,7 @@ const ProjectCard = ({
           </Grid>
         </Grid>
       </CardContent>
-    </>
+    </Card>
   );
 };
 
