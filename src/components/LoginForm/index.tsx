@@ -1,9 +1,11 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import FormInput from "../FormInput";
 import FormSubmit from "../FormSubmit";
+import useToken from "../../hooks/useToken";
+import axios from "axios";
 
 type Inputs = {
   email: string;
@@ -17,9 +19,27 @@ const LoginForm = () => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => logIn(data);
   const password = useRef({});
   password.current = watch("password", "");
+
+  const navigate = useNavigate();
+
+  const { persist } = useToken();
+
+  const logIn = async (body: Inputs) => {
+    try {
+      const logInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/login", {
+        Mail: body.email,
+        password: body.password,
+      });
+      persist(logInRes.data.token);
+      navigate("/");
+    } catch (e: unknown) {
+      const err = e as Error;
+      console.error(err);
+    }
+  };
 
   return (
     <Box maxWidth="sm" margin="auto">

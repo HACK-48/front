@@ -1,23 +1,13 @@
 import { Box, MenuItem, Select, Typography } from "@mui/material";
-import { ReactNode } from "react";
 
 type Props = {
   label: string;
   options: readonly any[];
   required?: boolean;
-  helperText?: ReactNode;
-  error?: boolean;
   register?: any;
 };
 
-const FormSelect = ({
-  label,
-  options,
-  helperText,
-  error,
-  register,
-  required = false,
-}: Props) => {
+const FormSelect = ({ label, options, register, required = false }: Props) => {
   return (
     <Box
       sx={{
@@ -30,6 +20,8 @@ const FormSelect = ({
         {label} {required && "*"}
       </Typography>
       <Select
+        {...register}
+        defaultValue=""
         sx={{
           borderRadius: 0,
           "> div": {
