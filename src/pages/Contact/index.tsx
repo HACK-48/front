@@ -31,10 +31,10 @@ const Contact = () => {
               Suivez-nous
             </Typography>
             <Box>
-              <Link sx={{ mr: 2 }} href="https://www.instagram.com/hack48_/">
+              <Link sx={{ mr: 2 }} href="https://instagram.com/hack48_?igshid=YmMyMTA2M2Y=" target="_blank">
                 <img src={logoInstagram} alt="logo instagram" />
               </Link>
-              <Link href="https://www.tiktok.com/@hack48ynov?_t=8bQhASfK9d0&_r=1">
+              <Link href="https://www.tiktok.com/@hack48ynov?_t=8bQhASfK9d0&_r=1" target="_blank">
                 <img src={logoTiktok} alt="logo tiktok" />
               </Link>
             </Box>
