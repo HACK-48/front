@@ -40,7 +40,7 @@ const RegisterForm = () => {
       const signInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/register", body);
       if (signInRes.status === 201) {
         const logInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/login", {
-          Mail: body.mail,
+          mail: body.mail,
           password: body.password,
         });
         persist(logInRes.data.token);
