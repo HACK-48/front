@@ -13,7 +13,7 @@ import useToken from "../../hooks/useToken";
 type Inputs = {
   pseudo: string;
   mail: string;
-  name: string;
+  firstname: string;
   lastName: string;
   password: string;
   passwordConfirm: string;
@@ -72,9 +72,9 @@ const RegisterForm = () => {
         <Grid item xs={12} sm={6}>
           <FormInput
             label="Prénom"
-            helperText={errors.name?.message ? errors.name.message : " "}
-            error={!!errors.name}
-            register={register("name")}
+            helperText={errors.firstname?.message ? errors.firstname.message : " "}
+            error={!!errors.firstname}
+            register={register("firstname")}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
