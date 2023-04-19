@@ -30,7 +30,7 @@ const LoginForm = () => {
   const logIn = async (body: Inputs) => {
     try {
       const logInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/login", {
-        Mail: body.email,
+        mail: body.email,
         password: body.password,
       });
       persist(logInRes.data.token);
