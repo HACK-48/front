@@ -2,16 +2,18 @@ import { Grid, Link, Typography, Box } from "@mui/material";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import FormInput from "../FormInput";
 import FormSelect from "../FormSelect";
 import FormSubmit from "../FormSubmit";
 import { SectorOptions } from "./sectors";
+import axios from "axios";
+import useToken from "../../hooks/useToken";
 
 type Inputs = {
   pseudo: string;
-  email: string;
-  firstName: string;
+  mail: string;
+  name: string;
   lastName: string;
   password: string;
   passwordConfirm: string;
@@ -25,9 +27,30 @@ const RegisterForm = () => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => signIn(data);
   const password = useRef({});
   password.current = watch("password", "");
+
+  const navigate = useNavigate();
+
+  const { persist } = useToken();
+
+  const signIn = async (body: Inputs) => {
+    try {
+      const signInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/register", body);
+      if (signInRes.status === 201) {
+        const logInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/login", {
+          Mail: body.mail,
+          password: body.password,
+        });
+        persist(logInRes.data.token);
+        navigate("/");
+      }
+    } catch (e: unknown) {
+      const err = e as Error;
+      console.error(err);
+    }
+  };
 
   return (
     <Box maxWidth="md" margin="auto">
@@ -37,18 +60,11 @@ const RegisterForm = () => {
       <Typography variant="body1" mb={5}>
         Porem ipsum dolor sit amet, consectetur adipiscing elit.
       </Typography>
-      <Grid
-        container
-        component="form"
-        onSubmit={handleSubmit(onSubmit)}
-        spacing={2}
-      >
+      <Grid container component="form" onSubmit={handleSubmit(onSubmit)} spacing={2}>
         <Grid item xs={12} sm={6}>
           <FormInput
             label="Nom"
-            helperText={
-              errors.lastName?.message ? errors.lastName.message : " "
-            }
+            helperText={errors.lastName?.message ? errors.lastName.message : " "}
             error={!!errors.lastName}
             register={register("lastName")}
           />
@@ -56,25 +72,23 @@ const RegisterForm = () => {
         <Grid item xs={12} sm={6}>
           <FormInput
             label="Prénom"
-            helperText={
-              errors.firstName?.message ? errors.firstName.message : " "
-            }
-            error={!!errors.firstName}
-            register={register("firstName")}
+            helperText={errors.name?.message ? errors.name.message : " "}
+            error={!!errors.name}
+            register={register("name")}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormInput
-            label="Email"
+            label="mail"
             type="email"
             required={true}
-            helperText={errors.email?.message ? errors.email.message : " "}
-            error={!!errors.email}
-            register={register("email", {
+            helperText={errors.mail?.message ? errors.mail.message : " "}
+            error={!!errors.mail}
+            register={register("mail", {
               required: { value: true, message: "Ce champs est requis" },
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Adresse email invalide",
+                message: "Adresse mail invalide",
               },
             })}
           />
@@ -95,9 +109,7 @@ const RegisterForm = () => {
             label="Mot de passe"
             type="password"
             required={true}
-            helperText={
-              errors.password?.message ? errors.password.message : " "
-            }
+            helperText={errors.password?.message ? errors.password.message : " "}
             error={!!errors.password}
             register={register("password", {
               required: { value: true, message: "Ce champs est requis" },
@@ -109,17 +121,11 @@ const RegisterForm = () => {
             label="Confirmer mot de passe"
             type="password"
             required={true}
-            helperText={
-              errors.passwordConfirm?.message
-                ? errors.passwordConfirm.message
-                : " "
-            }
+            helperText={errors.passwordConfirm?.message ? errors.passwordConfirm.message : " "}
             error={!!errors.passwordConfirm}
             register={register("passwordConfirm", {
               required: { value: true, message: "Ce champs est requis" },
-              validate: (value) =>
-                value === password.current ||
-                "Les mots de passe ne correspondent pas.",
+              validate: (value) => value === password.current || "Les mots de passe ne correspondent pas.",
             })}
           />
         </Grid>
@@ -127,8 +133,7 @@ const RegisterForm = () => {
           <FormSelect
             label="Filière"
             options={Object.entries(SectorOptions)}
-            error={!!errors.sector}
-            register={register("sector")}
+            register={register("sector", { required: true })}
           />
         </Grid>
 
