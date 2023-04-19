@@ -15,12 +15,13 @@ import Profile from "./pages/Profile";
 function App() {
   // Create a client
   const queryClient = new QueryClient();
+  const isAuth = localStorage.getItem("auth") != null ?? false;
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <Router>
-          <Header />
+          <Header isAuth={isAuth}/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />

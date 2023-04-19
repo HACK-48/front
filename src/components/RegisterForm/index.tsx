@@ -2,11 +2,13 @@ import { Grid, Link, Typography, Box } from "@mui/material";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import FormInput from "../FormInput";
 import FormSelect from "../FormSelect";
 import FormSubmit from "../FormSubmit";
 import { SectorOptions } from "./sectors";
+import axios from "axios";
+import React from "react";
 
 type Inputs = {
   pseudo: string;
@@ -25,9 +27,34 @@ const RegisterForm = () => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const navigate = useNavigate();
+  const [error, setError] = React.useState('');
+  const url = "http://localhost:8080/api/v1/register";
+
   const password = useRef({});
   password.current = watch("password", "");
+
+  const onSubmit = handleSubmit(async(values, event) => {
+    event?.preventDefault();
+
+    try {
+      const response = await axios.post(url, values);
+  
+      if (response.status === 201) {
+        navigate('/login');
+      }
+    } catch(error: any) {
+      setError(error.message);
+    }
+  });
+
+  const errorsDisplayer = () => {
+    if (error) {
+      return (
+        <p style={{color: "red"}}>{error}</p>
+      )
+    }
+  }
 
   return (
     <Box maxWidth="md" margin="auto">
@@ -40,7 +67,7 @@ const RegisterForm = () => {
       <Grid
         container
         component="form"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={onSubmit}
         spacing={2}
       >
         <Grid item xs={12} sm={6}>
@@ -139,6 +166,7 @@ const RegisterForm = () => {
           </Link>
         </Grid>
       </Grid>
+      {errorsDisplayer()}
     </Box>
   );
 };
