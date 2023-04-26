@@ -15,14 +15,20 @@ import MenuIcon from "@mui/icons-material/Menu";
 import styles from "./styles.module.scss";
 import logo from "../../assets/Logo-Hack48.svg";
 import { redirect, useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useToken";
 
-interface IProps {
-  isAuth?: boolean;
-}
-
-const Header = ({ isAuth = true }: IProps) => {
+const Header = () => {
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { token } = useToken();
+
+  const isAuth = () => {
+    if (token) {
+      return true;
+    }
+
+    return false;
+  }
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -32,7 +38,7 @@ const Header = ({ isAuth = true }: IProps) => {
     setDrawerOpen(false);
   };
 
-  const userLinks = isAuth ? (
+  const userLinks = isAuth() ? (
     <Button
       onClick={() => navigate("user-profile")}
       className={styles.menuLinks}
@@ -41,6 +47,7 @@ const Header = ({ isAuth = true }: IProps) => {
       Profil
     </Button>
   ) : (
+    <div>
     <Button
       onClick={() => navigate("login")}
       className={styles.menuLinks}
@@ -48,9 +55,17 @@ const Header = ({ isAuth = true }: IProps) => {
     >
       Connexion
     </Button>
+    <Button
+      onClick={() => navigate("register")}
+      className={styles.menuLinks}
+      color="inherit"
+      >
+        Inscription
+    </Button>
+    </div>
   );
 
-  const userLinksMobile = isAuth ? (
+  const userLinksMobile = isAuth() ? (
     <ListItem
       onClick={() => navigate("user-profile")}
       //className={styles.menuLinks}
@@ -59,13 +74,22 @@ const Header = ({ isAuth = true }: IProps) => {
       <ListItemText primary="Profil" />
     </ListItem>
   ) : (
-    <ListItem
-      onClick={() => navigate("login")}
-      // className={styles.menuLinks}
-      button
-    >
-      <ListItemText primary="Connexion" />
-    </ListItem>
+    <div>
+      <ListItem
+        onClick={() => navigate("login")}
+        // className={styles.menuLinks}
+        button
+      >
+        <ListItemText primary="Connexion" />
+      </ListItem>
+      <ListItem
+        onClick={() => navigate("register")}
+        // className={styles.menuLinks}
+        button
+      >
+        <ListItemText primary="Inscription" />
+      </ListItem>
+    </div>
   );
 
   return (
