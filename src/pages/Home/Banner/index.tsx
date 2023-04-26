@@ -3,7 +3,14 @@ import RoundButton from "../../../components/RoundButton";
 
 const Banner = () => {
   return (
-    <Box sx={{ background: "#5E4A98", color: "#fff", textAlign: "center", py: "36px" }}>
+    <Box
+      sx={{
+        background: "#5E4A98",
+        color: "#fff",
+        textAlign: "center",
+        py: "36px",
+      }}
+    >
       <Container maxWidth="xl">
         <Typography variant="h2" mb={2}>
           Prochain Hackathon
@@ -15,6 +22,11 @@ const Banner = () => {
           sx={{
             color: "#fff",
             background: "#8E75D5",
+
+            "&:hover": {
+              color: "#8E75D5",
+              background: "#fff",
+            },
           }}
         >
           Je participe !
