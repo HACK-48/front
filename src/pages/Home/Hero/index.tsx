@@ -17,7 +17,7 @@ const Hero = () => {
               </Typography>
             </Typography>
             <Typography variant="subtitle1" mb="60px">
-              Le 15 et 16 Septembre 2023
+              Le 14 et 15 Octobre 2023
             </Typography>
             <Typography variant="h2" component="h1" mb="46px">
               Hackathon limité, créativité illimitée : voyez les contraintes

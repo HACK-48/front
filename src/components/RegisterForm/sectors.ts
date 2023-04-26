@@ -1,4 +1,4 @@
 export const SectorOptions = {
-  info: "Informatique",
-  crea: "Crea",
+  0: "Informatique",
+  1: "Crea",
 } as const;

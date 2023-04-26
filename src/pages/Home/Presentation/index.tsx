@@ -23,7 +23,7 @@ const Presentation = () => {
         </Typography>
         <div className={classes.grid}>
           <VideoPlayer
-            src="https://www.youtube.com/embed/7oDjB9v0zMs"
+            src="https://www.youtube.com/embed/Pg8h_Ba554M"
             title="placeholder"
             width={width}
             height={height}

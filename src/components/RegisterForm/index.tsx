@@ -138,7 +138,7 @@ const RegisterForm = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} sx={{ textAlign: "center" }} margin="auto">
-          <FormSubmit>Connexion</FormSubmit>
+          <FormSubmit>S'inscrire</FormSubmit>
           <Link color={"#000"} component={RouterLink} to={"/login"}>
             Déjà un compte ?
           </Link>
