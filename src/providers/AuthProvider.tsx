@@ -1,7 +1,8 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
 export type AuthValue = [string | null, React.Dispatch<React.SetStateAction<string | null>>];
-export const AuthContext = createContext<AuthValue>([null, () => null]);
+
+const AuthContext = createContext<AuthValue>([null, () => null]);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const auth = useState<string | null>(localStorage.getItem("token"));
