@@ -14,13 +14,13 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "./styles.module.scss";
 import logo from "../../assets/Logo-Hack48.svg";
-import { redirect, useNavigate } from "react-router-dom";
-import useToken from "../../hooks/useToken";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../providers/AuthProvider";
 
 const Header = () => {
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { token } = useToken();
+  const { token, remove } = useAuth();
 
   const isAuth = () => {
     if (token) {
@@ -28,7 +28,7 @@ const Header = () => {
     }
 
     return false;
-  }
+  };
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -39,40 +39,42 @@ const Header = () => {
   };
 
   const userLinks = isAuth() ? (
-    <Button
-      onClick={() => navigate("user-profile")}
-      className={styles.menuLinks}
-      color="inherit"
-    >
-      Profil
-    </Button>
+    <>
+      <Button onClick={() => navigate("user-profile")} className={styles.menuLinks} color="inherit">
+        Profil
+      </Button>
+      <Button onClick={() => remove()} className={styles.menuLinks} color="inherit">
+        Déconnexion
+      </Button>
+    </>
   ) : (
     <div>
-    <Button
-      onClick={() => navigate("login")}
-      className={styles.menuLinks}
-      color="inherit"
-    >
-      Connexion
-    </Button>
-    <Button
-      onClick={() => navigate("register")}
-      className={styles.menuLinks}
-      color="inherit"
-      >
+      <Button onClick={() => navigate("login")} className={styles.menuLinks} color="inherit">
+        Connexion
+      </Button>
+      <Button onClick={() => navigate("register")} className={styles.menuLinks} color="inherit">
         Inscription
-    </Button>
+      </Button>
     </div>
   );
 
   const userLinksMobile = isAuth() ? (
-    <ListItem
-      onClick={() => navigate("user-profile")}
-      //className={styles.menuLinks}
-      button
-    >
-      <ListItemText primary="Profil" />
-    </ListItem>
+    <>
+      <ListItem
+        onClick={() => navigate("user-profile")}
+        //className={styles.menuLinks}
+        button
+      >
+        <ListItemText primary="Profil" />
+      </ListItem>
+      <ListItem
+        onClick={() => remove()}
+        //className={styles.menuLinks}
+        button
+      >
+        <ListItemText primary="Déconnexion" />
+      </ListItem>
+    </>
   ) : (
     <div>
       <ListItem
@@ -94,40 +96,19 @@ const Header = () => {
 
   return (
     <Box>
-      <AppBar
-        className={styles.container}
-        position="static"
-        sx={{ background: "#111" }}
-      >
+      <AppBar className={styles.container} position="static" sx={{ background: "#111" }}>
         <Toolbar sx={{ display: { xs: "flex", md: "flex" }, flexWrap: "wrap" }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <img
-              onClick={() => navigate("/")}
-              className={styles.logo}
-              src={logo}
-              alt=""
-            />
+            <img onClick={() => navigate("/")} className={styles.logo} src={logo} alt="" />
           </Typography>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Button
-              onClick={() => navigate("teams")}
-              className={styles.menuLinks}
-              color="inherit"
-            >
+            <Button onClick={() => navigate("teams")} className={styles.menuLinks} color="inherit">
               Les teams
             </Button>
-            <Button
-              onClick={() => navigate("old-projects")}
-              className={styles.menuLinks}
-              color="inherit"
-            >
+            <Button onClick={() => navigate("old-projects")} className={styles.menuLinks} color="inherit">
               Projet passés
             </Button>
-            <Button
-              onClick={() => navigate("contact")}
-              className={styles.menuLinks}
-              color="inherit"
-            >
+            <Button onClick={() => navigate("contact")} className={styles.menuLinks} color="inherit">
               Contact
             </Button>
             {userLinks}

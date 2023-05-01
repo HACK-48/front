@@ -4,8 +4,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import FormInput from "../FormInput";
 import FormSubmit from "../FormSubmit";
-import useToken from "../../hooks/useToken";
 import axios from "axios";
+import { useAuth } from "../../providers/AuthProvider";
 
 type Inputs = {
   email: string;
@@ -25,7 +25,7 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
 
-  const { persist } = useToken();
+  const { persist } = useAuth();
 
   const logIn = async (body: Inputs) => {
     try {
@@ -74,6 +74,7 @@ const LoginForm = () => {
             label="Mot de passe"
             type="password"
             required={true}
+            register={register("password")}
             helperText={
               <Link color={"#000"} component={RouterLink} to={"/login"}>
                 Mot de passe oublié ?
