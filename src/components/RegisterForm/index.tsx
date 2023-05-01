@@ -8,7 +8,7 @@ import FormSelect from "../FormSelect";
 import FormSubmit from "../FormSubmit";
 import { SectorOptions } from "./sectors";
 import axios from "axios";
-import useToken from "../../hooks/useToken";
+import { useAuth } from "../../providers/AuthProvider";
 
 type Inputs = {
   pseudo: string;
@@ -33,7 +33,7 @@ const RegisterForm = () => {
 
   const navigate = useNavigate();
 
-  const { persist } = useToken();
+  const { persist } = useAuth();
 
   const signIn = async (body: Inputs) => {
     try {
