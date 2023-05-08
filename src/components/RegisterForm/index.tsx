@@ -9,6 +9,7 @@ import FormSubmit from "../FormSubmit";
 import { SectorOptions } from "./sectors";
 import axios from "axios";
 import { useAuth } from "../../providers/AuthProvider";
+import { API_URL } from "../../conf";
 
 type Inputs = {
   pseudo: string;
@@ -37,9 +38,9 @@ const RegisterForm = () => {
 
   const signIn = async (body: Inputs) => {
     try {
-      const signInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/register", body);
+      const signInRes = await axios.post(`${API_URL}/register`, body);
       if (signInRes.status === 201) {
-        const logInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/login", {
+        const logInRes = await axios.post(`${API_URL}/login`, {
           mail: body.mail,
           password: body.password,
         });
