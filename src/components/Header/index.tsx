@@ -40,6 +40,9 @@ const Header = () => {
 
   const userLinks = isAuth() ? (
     <>
+      <Button onClick={() => navigate("projectEventManager")} className={styles.menuLinks} color="inherit">
+        Outil
+      </Button>
       <Button onClick={() => navigate("user-profile")} className={styles.menuLinks} color="inherit">
         Profil
       </Button>
