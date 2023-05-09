@@ -1,11 +1,12 @@
+import { Container } from "@mui/material";
 import ChooseTeamSection from "./Sections/ChooseTeamSection";
 import TeamToolSection from "./Sections/TeamToolSection";
 
 export default function TeamManagementEventPage() {
-    return (
-        <div>
-            <TeamToolSection></TeamToolSection>
-            <ChooseTeamSection></ChooseTeamSection>
-        </div>
-    )
+  return (
+    <Container maxWidth="xl" sx={{ my: "120px" }}>
+      <TeamToolSection></TeamToolSection>
+      <ChooseTeamSection></ChooseTeamSection>
+    </Container>
+  );
 }
