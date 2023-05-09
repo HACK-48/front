@@ -10,14 +10,15 @@ import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../../conf";
 
 export default function TeamToolSection() {
-  const navigate = useNavigate();
-
-  const url = "teamProjectManagement/6411beea15035f8d5cec5619";
+  const url = "teamProjectManagement/6459f2888cecff2c88b3831a";
   const images = [malus1, malus2, malus3];
   const token = localStorage.getItem("token");
 
-  const [malusSentences, setMalusSentences] = React.useState<string[]>([]);
-  const [errors, setErrors] = React.useState("");
+  const [malusSentences, setMalusSentences] = React.useState<string[]>([
+    "Pause café : Vous ne pouvez pas continuer à travailler sans votre café.",
+    "Accro au téléphone : Pendant la prochaine heure vous ne pouvez pas lâcher votre téléphone.",
+    "Crunch : La deadline est plus tôt que prévue. - 1h de travail.",
+  ]);
 
   React.useEffect(() => {
     (async () => {
@@ -31,14 +32,10 @@ export default function TeamToolSection() {
         const resp = await instance.get(url);
         setMalusSentences(resp.data.Resp.data.map((_: any) => _.projectManagementEventId.sentence));
       } catch (error: any) {
-        setErrors(error.message);
+        console.log(error.message);
       }
     })();
   }, []);
-
-  if (errors) {
-    navigate("/login");
-  }
 
   return (
     <div className="main-container">
