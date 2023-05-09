@@ -17,16 +17,12 @@ export default function MainTitle({ text, color }: Props) {
       style={{
         borderBottom: `2px solid ${color ?? colors[randNb()]}`,
         width: "fit-content",
-        height: "3rem",
+        minHeight: "3rem",
         marginBottom: "2rem",
-        marginTop: "2rem"
+        marginTop: "2rem",
       }}
     >
-      <Typography
-        component="h2"
-        variant="body2"
-        style={{ fontSize: "1.5rem", paddingRight: "3rem" }}
-      >
+      <Typography component="h2" variant="body2" style={{ fontSize: "1.5rem", paddingRight: "3rem" }}>
         {text}
       </Typography>
     </div>
