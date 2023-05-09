@@ -11,6 +11,8 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { AuthProvider } from "./providers/AuthProvider";
+import Teams from "./pages/Teams";
+import TeamCreate from "./pages/TeamCreate";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/old-projects" element={<PreviousProjects />} />
             <Route path="/user-profile" element={<Profile />} />
+            <Route path="/teams" element={<Teams />} />
+            <Route path="/teams/create" element={<TeamCreate />} />
             <Route path="/projectEventManager" element={<TeamManagementEventPage />}></Route>
           </Routes>
           <Footer />
