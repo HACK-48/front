@@ -6,6 +6,7 @@ import FormInput from "../FormInput";
 import FormSubmit from "../FormSubmit";
 import axios from "axios";
 import { useAuth } from "../../providers/AuthProvider";
+import { API_URL } from "../../conf";
 
 type Inputs = {
   email: string;
@@ -29,7 +30,7 @@ const LoginForm = () => {
 
   const logIn = async (body: Inputs) => {
     try {
-      const logInRes = await axios.post("https://hack48-api.osc-fr1.scalingo.io/api/v1/login", {
+      const logInRes = await axios.post(`${API_URL}/login`, {
         mail: body.email,
         password: body.password,
       });

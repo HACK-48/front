@@ -8,8 +8,10 @@ type Props = {
 const ToolCard = ({ sentence, imageUrl }: Props) => {
   return (
     <Card
-      sx={{ margin: "3rem", width: 315, height: 442, boxShadow: "none" }}
-      style={{
+      sx={{
+        width: 315,
+        height: 442,
+        boxShadow: 0,
         backgroundImage: `url(${imageUrl})`,
         backgroundColor: "transparent",
         cursor: "pointer",
